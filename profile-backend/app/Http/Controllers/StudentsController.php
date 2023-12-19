@@ -29,8 +29,11 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->input();
-        $requests =Student::create($inputs);
-        return $requests;
+        $e = Student::create($inputs);
+         return response()->json([
+            'data'=>$e,
+            'message'=>"successfully updated student.",
+         ]);
 
     }
 
@@ -39,7 +42,18 @@ class StudentsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $e = Student::find($id);
+        if(isset($e)){
+            return response()->json([
+                'data' => $e,
+                'message'=> "student found success",
+            ]);
+        }else {
+            return response()->json([
+                'error'=>true,
+                'message'=>"No student found",
+            ]);
+        }
     }
 
     /**
