@@ -102,6 +102,28 @@ class StudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $e = Student::find($id);
+       if(isset($e)){
+            $res=Student::destroy($id);
+            if($res){
+                return response()->json([
+                    'data'=>$e,
+                    'message'=>"student successfully eliminated",
+                ]);
+            }else {
+                return response()->json([
+                    'data'=>$e,
+                    'mensaje'=>"Student doesn't exist",
+                ]);
+            }
+       }else {
+        return response()->json([
+            'error'=>true,
+             'message'=>"student does not exist",
+
+        ]);
+
+       }
     }
+
 }
