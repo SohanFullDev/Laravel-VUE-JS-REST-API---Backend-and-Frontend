@@ -56,7 +56,8 @@ class UserController extends Controller
     {
         $e = User::find($id);
         if(isset($e)){
-            $e->name =$request->name;
+            $e->first_name =$request->first_name;
+            $e->last_name =$request->last_name;
             $e->email = $request->email;
             $e->password = Hash::make($request->password);
             //return $e->save();
