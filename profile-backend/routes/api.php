@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource("v1/students", StudentsController::class);
+Route::apiResource("v1/users", UserController::class);
+
