@@ -40,7 +40,7 @@
                     <i class="fa-solid fa-edit"></i>
                   </router-link>
                   &nbsp;
-                  <button class="btn btn-danger">
+                  <button class="btn btn-danger" v-on:click="$event=>eliminate(stu.id,stu.name)">
                     <i class="fa-solid fa-trash"></i>
                   </button>
 
@@ -56,6 +56,7 @@
 
 <script>
 import axios from 'axios';
+import {confirm} from '../functions'
 
 export default{
   data(){
@@ -76,7 +77,10 @@ export default{
            this.charging = false;
         }
       );
-
+    },
+    eliminate(id,name){
+       confirm('http://localhost:8000/api/v1/students/',id,'Delete record','Record you want to delete '+name+'?')
+       this.charging=false;
     }
   }
 
