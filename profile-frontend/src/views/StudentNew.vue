@@ -12,7 +12,13 @@
         <img v-else height="100" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-256.png" class="img-thumbnail" id="photoimg" alt="">
 
        </div>
-               </form>
+
+       <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+        <input type="text" v-model="name" id="name" placeholder="Input name" required maxlength="50" class="form-control">
+       </div>
+
+       </form>
 
              </div>
            </div>
