@@ -29,7 +29,7 @@
      </div>
 
      <div class="d-grid col-6 mx-auto mb-3">
-         <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"> Register</i></button>
+         <button class="btn btn-warning"><i class="fa-solid fa-refresh"> Update</i></button>
      </div>
 
     </form>
@@ -90,7 +90,7 @@ export default{
          showAlert('Input lastname','warning','lastname');
       }else{
          var parameters = {name:this.name.trim(),lastname:this.lastname.trim(),photo:this.photo.trim()}
-         sendRequest('POST',parameters,this.url,'Student Registered!!!');
+         sendRequest('PUT',parameters,this.url,'Student Updated!!!');
       }
 
      
