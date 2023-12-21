@@ -3,10 +3,10 @@
      <div class="col-md-6 offset-md-3">
         <div class="card">
           <div class="card-header bg-dark text-white text-center">
-             Registar Student
+            Edit Student
           </div>
           <div class="card-body">
-      <form v-on:submit="keep">
+      <form v-on:submit="update">
     <div class="d-grid col-6 mx-auto mb-3">
      <img v-if="this.photo" height="100" :src="this.photo" id="photoimg" class="img-thumbnail" alt="">
      <img v-else height="100" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-256.png" class="img-thumbnail" id="photoimg" alt="">
@@ -42,11 +42,14 @@
 </template>
 
 <script>
-import {showAlert, sendRequest} from '../functions'
+import {showAlert, sendRequest} from '../functions';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
 
 export default{
  data(){
    return {
+    id:0,
      students:'',
      lastname:'',
      photo:'',
@@ -54,9 +57,28 @@ export default{
      charging:false
    }
  },
+ mounted(){
+  const route = useRoute();
+  this.id = route.params.id;
+  this.url += '/'+this.id;
+  this.getStudent();
+
+ },
 
  methods:{
-   keep(){
+   getStudent(){
+     axios.get(this.url).then(
+      res=>{
+        this.name = res.data.data.name;
+        this.lastname = res.data.data.lastname;
+        this.photo = res.data.data.photo;
+
+      }
+
+     );
+
+    },
+   update(){
     // this.charging = true;
       event.preventDefault();
       var myPhoto = document.getElementById('photoimg');
