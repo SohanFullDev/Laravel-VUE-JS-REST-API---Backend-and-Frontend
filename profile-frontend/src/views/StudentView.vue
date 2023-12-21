@@ -6,7 +6,11 @@
             Student Details 
           </div>
           <div class="card-body">
-      <form v-on:submit="update">
+            <div class="d-grid col-6 mx-auto mb-3">
+            <router-link :to="{path:'/'}" class="btn btn-info">
+              <i class="fa-solid fa-arrow-left"></i> Return to list
+            </router-link>
+          </div>
     <div class="d-grid col-6 mx-auto mb-3">
      <img v-if="this.photo" height="100" :src="this.photo" id="photoimg" class="img-thumbnail" alt="">
      <img v-else height="100" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-256.png" class="img-thumbnail" id="photoimg" alt="">
@@ -15,26 +19,15 @@
 
     <div class="input-group mb-3">
      <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-     <input type="text" v-model="name" id="name" placeholder="Input name" required class="form-control" maxlength="50">
+    <label v-text="name" class="form-control"></label>
     </div>
 
     <div class="input-group mb-3">
       <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-      <input type="text" v-model="lastname" id="lastname" placeholder="Input last name" required class="form-control" maxlength="50">
+      <label v-text="lastname" class="form-control"></label>
      </div>
 
-     <div class="input-group mb-3">
-      <span class="input-group-text"><i class="fa-solid fa-gift"></i></span>
-      <input v-on:change="previewPhoto" type="file" accept="image/png, image/jpeg, image/gif" class="form-control">
-     </div>
-
-     <div class="d-grid col-6 mx-auto mb-3">
-         <button class="btn btn-warning"><i class="fa-solid fa-refresh"> Update</i></button>
-     </div>
-
-    </form>
-
-          </div>
+       </div>
         </div>
      </div>
 
