@@ -15,8 +15,13 @@
 
        <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-        <input type="text" v-model="name" id="name" placeholder="Input name" required maxlength="50" class="form-control">
+        <input type="text" v-model="name" id="name" placeholder="Input name" required class="form-control" maxlength="50">
        </div>
+
+       <div class="input-group mb-3">
+         <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+         <input type="text" v-model="lastname" id="lastname" placeholder="Input last name" required class="form-control" maxlength="50">
+        </div>
 
        </form>
 
@@ -27,3 +32,31 @@
      </div>
   </template>
   
+  <script>
+import {confirm} from '../functions'
+
+export default{
+  data(){
+    return {
+      students:'',
+      lastname:'',
+      photo:'',
+      url:'http://localhost:8000/api/v1/students',
+      charging:false
+    }
+  },
+
+  methods:{
+    keep(){
+      this.charging = true;
+      
+    },
+    eliminate(id,name){
+       confirm('http://localhost:8000/api/v1/students/',id,'Delete record','Record you want to delete '+name+'?')
+       this.charging=false;
+    }
+  }
+
+}
+
+</script>
