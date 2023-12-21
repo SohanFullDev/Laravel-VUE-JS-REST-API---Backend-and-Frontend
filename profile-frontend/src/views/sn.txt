@@ -1,0 +1,76 @@
+
+  <script>
+import {showAlert, sendRequest} from '../functions'
+
+export default{
+  data(){
+    return {
+      students:'',
+      lastname:'',
+      photo:'',
+      url:'http://localhost:8000/api/v1/students',
+      charging:false
+    }
+  },
+
+  methods:{
+    keep(){
+      this.charging = true;
+      
+    },
+    previewPhoto(event){
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = function(){
+         var myPhoto = document.getElementById('fotoimg');
+         myPhoto.src = reader.result;
+         this.photo = myPhoto.src;
+
+      }
+    }
+
+  }
+
+}
+
+</script>
+
+*******another script********************************************
+******************************************************************************
+
+
+  <script>
+import { showAlert, sendRequest } from '../functions'
+
+export default {
+  data() {
+    return {
+      students: '',
+      lastname: '',
+      photo: '',
+      url: 'http://localhost:8000/api/v1/students',
+      charging: false
+    }
+  },
+
+  methods: {
+    keep() {
+      this.charging = true;
+      // Perform your submit actions here
+    },
+    previewPhoto(event) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e) => { // Use arrow function to preserve the correct context
+        const myPhoto = document.getElementById('photoimg');
+        if (myPhoto) {
+          myPhoto.src = e.target.result; // Access result from the event
+          this.photo = myPhoto.src;
+        } else {
+          console.error("Element with ID 'fotoimg' not found");
+        }
+      }
+    }
+  }
+}
+</script>
